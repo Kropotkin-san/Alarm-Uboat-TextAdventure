@@ -10,44 +10,49 @@ class Enemy:
 
 class Tanker(Enemy):
 	def __init__(self):
-		super().__init__(name="T7 Tanker",
-			hp=60,
+		super().__init__(name="Tanker",
+			hp=50,
 			damage=0,
 			tonnage=10000
 			)
 
+#class (Enemy):
+#	def __init__(self):
+#		super().__init__(name="",
+#			hp=,
+#			damage=,
+#			tonnage=)
+
 class Lmerchant(Enemy):
 	def __init__(self):
-		super.()__init__(name="Large Merchant",
+		super().__init__(name="Large Merchant",
 			hp=80,
-			damage=20,
+			damage=15,
 			tonnage=8500)
 
 class Merchant(Enemy):
 	def __init__(self):
-		super.()__init__(name="Merchant",
+		super().__init__(name="Merchant",
 			hp=70,
-			damage=15,
+			damage=10,
 			tonnage=6000,)
 
 class Destroyer(Enemy):
 	def __init__(self):
-		super.()__init__(name="Destroyer",
+		super().__init__(name="Destroyer",
 			hp=40,
 			damage=75,
 			tonnage=3000,)
 
-class Battleship(Enemy):
-	def __init__(self):
-		super.()__init__(name="Battleship",
-			hp=200,
-			damage=100,
-			tonnage=38000,)
-
 class Troop(Enemy):
 	def __init__(self):
-		super.()__init__(name="Troop Transport",
+		super().__init__(name="Troop Transport",
 			hp=85,
 			damage=0,
 			tonnage=9000,)
-
+class Submarine(Enemy):
+	def __init__(self):
+		super().__init__(name="British T-Class Submarine",
+			hp=20,
+			damage=35,
+			tonnage=1000,)
