@@ -17,7 +17,9 @@ class StartingTile(Maptile):
 	def intro_text(self):
 		return """
 You're in a french subpen ready to depart on a war patrol. You can travel to the south or to the east. Your orders are to engage enemy shipping and sink as many merchants as conditions allow.
-Gute Jagd Herr Kaleun!"""
+Gute Jagd Herr Kaleun!
+
+"""
 
 	def modify_player(self, player):
 		pass
@@ -34,16 +36,16 @@ Gute Jagd Herr Kaleun!"""
 
 class EmptySea(Maptile):
 	def intro_text(self):
-		return "Nothing but sea herr Kaleun."
+		return """Nothing but sea herr Kaleun.
+
+		"""
 	def modify_player(self, player):
 		pass
 
 class GenericMerchantTile(Maptile):
 	def __init__(self, x, y):
 		r = random.random()
-		if r < 0.2:
-			self.enemy = None
-		elif r < 0.50:
+		if r < 0.50:
 			self.enemy = enemies.Merchant()
 		elif r < 0.75:
 			self.enemy = enemies.Lmerchant()
@@ -54,16 +56,18 @@ class GenericMerchantTile(Maptile):
 
 	def intro_text(self):
 		if self.enemy.is_alive() and self.enemy != None:
-			return"A {} has been spotted herr Kaleun!".format(self.enemy.name)
+			return"""A {} has been spotted herr Kaleun!
+
+			""".format(self.enemy.name)
 		else:
-			return"Here lies the wreckage of the {} we sunk.".format(self.enemy.name)
+			return"""Here lies the wreckage of the {} we sunk.
+
+			""".format(self.enemy.name)
 
 class GenericWarshipTile(Maptile):
 	def __init__(self, x, y):
 		r = random.random()
-		if r < 0.30:
-			self.enemy = None
-		elif r < 0.75:
+		if r < 0.65:
 			self.enemy = enemies.Destroyer()
 		else:
 			self.enemy = enemies.Submarine()
@@ -72,9 +76,13 @@ class GenericWarshipTile(Maptile):
 
 	def intro_text(self):
 		if self.enemy.is_alive():
-			return"A {} has been spotted herr Kaleun!".format(self.enemy.name)
+			return"""A {} has been spotted herr Kaleun!
+
+			""".format(self.enemy.name)
 		else:
-			return"Here lies the wreckage of the {} we sunk.".format(self.enemt.name)
+			return"""Here lies the wreckage of the {} we sunk.
+
+			""".format(self.enemt.name)
 
 world_map = [
 	[StartingTile(0,0), EmptySea(1,0), GenericMerchantTile(2,0), EmptySea(3,0), EmptySea(4,0)],

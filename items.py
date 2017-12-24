@@ -22,19 +22,12 @@ class Weapon(Item):
 	def __str__(self):
 		return "{} {} Amount:{}".format(self.name, self.description, self.ammunition)
 
-class Torpedo1(Weapon):
-	def __init__(self):
-		super().__init__(name = "T1 Torpedo",
-			description = "Early war torpedo powered by gas. Replaced by the T2",
-			damage = 90,
-			ammunition = 10)
-
-class Torpedo2(Weapon):
+class Torpedo(Weapon):
 	def __init__(self):
 		super().__init__(name = "T2 Torpedo",
 			description = "Updated version of the T1. Powered by an electric engine.",
 			damage = 100,
-			ammunition = 4)
+			ammunition = 14)
 
 class Gun(Weapon):
 	def __init__(self):

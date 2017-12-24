@@ -3,8 +3,7 @@ import world
 
 class Player:
 	def __init__(self):
-		self.inventory = [items.Torpedo1(),
-						items.Torpedo2(),
+		self.inventory = [items.Torpedo(),
 						items.Gun()
 						]
 		self.hp = 100
