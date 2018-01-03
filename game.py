@@ -11,7 +11,7 @@ def play():
 			print(room.intro_text())
 			room.modify_player(player)
 			choose_action(room, player)
-
+		
 		except KeyboardInterrupt:
 			print("")
 			exit()
@@ -22,20 +22,26 @@ def play():
 def get_available_actions(room, player):
 	actions = OrderedDict()
 	print("What are your orders Herr Kaleun? Available orders are:")
+	if player:
+		action_adder(actions, 'q', player.exit, "Quit the game")
 	if player.inventory:
 		action_adder(actions, 'i', player.print_inventory, "Print Inventory")
-	if isinstance(room, world.GenericWarshipTile) and room.enemy.is_alive():
-		action_adder(actions, 'a', player.attack, "Attack")
 	if isinstance(room, world.GenericMerchantTile) and room.enemy.is_alive():
-		action_adder(actions, 'a', player.attack, "Attack")
+		action_adder(actions, 't', player.attack1, "Attack with a torpedo")
+	if isinstance(room, world.GenericMerchantTile) and room.enemy.is_alive():
+		action_adder(actions, 'd', player.attack2, "Attack with the deck gun")
+	if isinstance(room, world.GenericWarshipTile) and room.enemy.is_alive():
+		action_adder(actions, 't', player.attack1, "Attack with a torpedo")
+	if isinstance(room, world.GenericWarshipTile) and room.enemy.is_alive():
+		action_adder(actions, 'd', player.attack2, "Attack with the deck gun")
 	else:
-		if world.tile_at(room.x, room.y -1):
+		if world.tile_at(room.x -1, room.y):
 			action_adder(actions, 'n', player.move_North, "Go North")
 		if world.tile_at(room.x, room.y +1):
 			action_adder(actions, 's', player.move_South, "Go South")
 		if world.tile_at(room.x +1, room.y):
 			action_adder(actions, 'e', player.move_East, "Go East")
-		if world.tile_at(room.x -1, room.y):
+		if world.tile_at(room.x, room.y -1):
 			action_adder(actions, 'w', player.move_West, "Go West")
 		return actions
 

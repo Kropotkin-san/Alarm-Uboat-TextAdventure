@@ -16,7 +16,7 @@ def modify_player(self, player):
 class StartingTile(Maptile):
 	def intro_text(self):
 		return """
-You're in a french subpen ready to depart on a war patrol. You can travel to the south or to the east. Your orders are to engage enemy shipping and sink as many merchants as conditions allow.
+You're in a french subpen ready to depart on a war patrol. Your orders are to engage enemy shipping and sink as many merchants as conditions allow.
 Gute Jagd Herr Kaleun!
 
 """
@@ -64,6 +64,9 @@ class GenericMerchantTile(Maptile):
 
 			""".format(self.enemy.name)
 
+	def modify_player(self, player):
+		pass
+
 class GenericWarshipTile(Maptile):
 	def __init__(self, x, y):
 		r = random.random()
@@ -82,7 +85,10 @@ class GenericWarshipTile(Maptile):
 		else:
 			return"""Here lies the wreckage of the {} we sunk.
 
-			""".format(self.enemt.name)
+			""".format(self.enemy.name)
+
+	def modify_player(self, player):
+		pass
 
 world_map = [
 	[StartingTile(0,0), EmptySea(1,0), GenericMerchantTile(2,0), EmptySea(3,0), EmptySea(4,0)],
